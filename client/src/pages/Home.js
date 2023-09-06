@@ -3,6 +3,7 @@ import NavbarMenu from "./NavbarMenu";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import armoireImg from "../assets/armoire.webp";
 
 function Home() {
   return (
@@ -29,6 +30,15 @@ function Home() {
           </Col>
         </Row>
       </Container>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: 50,
+        }}
+      >
+        <img style={{ width: "50%" }} src={armoireImg} />
+      </div>
     </div>
   );
 }
