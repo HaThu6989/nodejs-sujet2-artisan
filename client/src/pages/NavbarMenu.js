@@ -27,6 +27,13 @@ function NavbarMenu() {
           >
             Nouveau Meuble
           </Nav.Link>
+          <Nav.Link
+            className="font-weight-bolder text-white"
+            to="/chart"
+            as={Link}
+          >
+            Graphique
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import OneFurniture from "./components/Furniture/OneFurniture";
 import CreateFurniture from "./components/Furniture/CreateFurniture";
 import UpdateFurniture from "./components/Furniture/UpdateFurniture";
+import Chart from "./pages/Chart";
 
 function App() {
   const [furnitures, setFurnitures] = useState([]);
@@ -80,6 +81,7 @@ function App() {
             />
           }
         />
+        <Route path="/chart" element={<Chart allMaterials={allMaterials} />} />
       </Routes>
     </div>
   );
