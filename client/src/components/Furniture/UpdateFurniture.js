@@ -99,7 +99,7 @@ function UpdateFurniture(props) {
                     </Form.Control>
                   </Form.Group>
 
-                  <Form.Group controlId="formBasicSelect" className="my-4">
+                  {/* <Form.Group controlId="formBasicSelect" className="my-4">
                     <Form.Label>Matières</Form.Label>
                     <Multiselect
                       options={allMaterials.map((elm) => {
@@ -124,7 +124,7 @@ function UpdateFurniture(props) {
                       showCheckbox="true"
                       keepSearchTerm="true"
                     />
-                  </Form.Group>
+                  </Form.Group> */}
                   <Button variant="success" type="submit" className="my-2">
                     Mettre à jour !
                   </Button>

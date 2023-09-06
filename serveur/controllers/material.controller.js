@@ -34,18 +34,21 @@ export const createMaterial = (req, res) => {
   const newMaterial = { title, compagny, furniture, quantity };
   MaterialModel.create(newMaterial)
     .then((materialCreated) => {
-      return FurnitureModel.updateMany(
-        { _id: materialCreated.furniture },
+      return FurnitureModel.findByIdAndUpdate(
+        materialCreated.furniture,
         { $push: { materials: materialCreated._id } },
         { $set: { claimed: true } }
       );
     })
-    .then(() => {
-      return MaterialModel.find()
-        .limit(1)
-        .sort({ $natural: -1 })
-        .then((response) => res.status(201).json(response));
+    .then((response) => {
+      res.status(201).json(response);
     })
+    // .then(() => {
+    //   return MaterialModel.find()
+    //     .limit(1)
+    //     .sort({ $natural: -1 })
+    //     .then((response) => res.status(201).json(response));
+    // })
     .catch((err) => {
       res.status(500).json({
         message: "error creating a new material",

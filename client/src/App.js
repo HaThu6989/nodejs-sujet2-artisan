@@ -12,6 +12,12 @@ function App() {
   const [allMaterials, setAllMaterials] = useState([]);
 
   console.log("allMaterials", allMaterials);
+
+  useEffect(() => {
+    getAllFurnitures();
+    getAllMaterials();
+  }, []);
+
   const getAllFurnitures = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/furnitures`)
@@ -32,11 +38,6 @@ function App() {
       );
   };
 
-  useEffect(() => {
-    getAllFurnitures();
-    getAllMaterials();
-  }, []);
-
   return (
     <div>
       <Routes>
@@ -54,8 +55,9 @@ function App() {
           path="/furnitures/:furnitureId"
           element={
             <OneFurniture
-              getAllFurnitures={getAllFurnitures}
+              allMaterials={allMaterials}
               getAllMaterials={getAllMaterials}
+              getAllFurnitures={getAllFurnitures}
             />
           }
         />
@@ -78,7 +80,6 @@ function App() {
             />
           }
         />
-        <Route path="/materials/:materialId" element={<OneFurniture />} />
       </Routes>
     </div>
   );

@@ -4,14 +4,19 @@ import Container from "react-bootstrap/esm/Container";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import CreateMaterial from "../Material/CreateMaterial";
+import Table from "react-bootstrap/Table";
+import UpdateMaterial from "../Material/UpdateMaterial";
+import DeleteMaterial from "../Material/DeleteMaterial";
 
 function OneFurniture(props) {
-  const { getAllMaterials, getAllFurnitures } = props;
+  const { allMaterials, getAllMaterials, getAllFurnitures } = props;
   const [furniture, setFurniture] = useState(null);
   const { furnitureId } = useParams();
 
   useEffect(() => {
     getOneFurniture();
+    getAllMaterials();
+    getAllFurnitures();
   }, []);
 
   const getOneFurniture = () => {
@@ -36,21 +41,61 @@ function OneFurniture(props) {
               {furniture.model ? <strong>Model : </strong> : null}
               {furniture.model}
             </p>
-            <CreateMaterial
-              furnitureId={furnitureId}
-              getAllMaterials={getAllMaterials}
-              getAllFurnitures={getAllFurnitures}
-            />
+
+            <div style={{ marginBottom: 20, marginTop: 20 }}>
+              <CreateMaterial
+                furnitureId={furnitureId}
+                getAllMaterials={getAllMaterials}
+                getAllFurnitures={getAllFurnitures}
+                getOneFurniture={getOneFurniture}
+              />
+            </div>
+
             {furniture.materials ? (
               <strong>Liste des matières premières</strong>
             ) : null}
-            {furniture.materials?.map((elm) => {
-              return (
-                <li>
-                  {elm.title} - {elm.compagny} - {elm.quantity}
-                </li>
-              );
-            })}
+
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Titre</th>
+                  <th>Compagnie</th>
+                  <th>Quantité</th>
+                  <th>Editer/Supprimer</th>
+                </tr>
+              </thead>
+              <tbody>
+                {furniture.materials?.map((elm, index) => {
+                  return (
+                    <tr>
+                      <td>{index + 1}</td>
+                      <td>{elm.title}</td>
+                      <td>{elm.compagny}</td>
+                      <td>{elm.quantity}</td>
+                      <td>
+                        <div style={{ display: "flex" }}>
+                          <UpdateMaterial
+                            furnitureId={furnitureId}
+                            material={elm}
+                            getAllMaterials={getAllMaterials}
+                            getAllFurnitures={getAllFurnitures}
+                            getOneFurniture={getOneFurniture}
+                          />
+                          <DeleteMaterial
+                            furnitureId={furnitureId}
+                            material={elm}
+                            getAllMaterials={getAllMaterials}
+                            getAllFurnitures={getAllFurnitures}
+                            getOneFurniture={getOneFurniture}
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
           </>
         )}
       </Container>
