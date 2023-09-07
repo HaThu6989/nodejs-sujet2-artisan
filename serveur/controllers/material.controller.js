@@ -1,5 +1,5 @@
-import MaterialModel from "../models/materialModel.js";
-import FurnitureModel from "../models/furnitureModel.js";
+import MaterialModel from "../models/material.model.js";
+import FurnitureModel from "../models/furniture.model.js";
 
 export const getAllMaterial = (req, res) => {
   MaterialModel.find()

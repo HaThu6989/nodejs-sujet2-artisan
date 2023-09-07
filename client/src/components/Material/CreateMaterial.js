@@ -60,7 +60,11 @@ function CreateMaterial(props) {
         keyboard={false}
       >
         <Form className="my-4" onSubmit={handleSubmit}>
+          <Modal.Header>
+            <Modal.Title>Ajouter une matière</Modal.Title>
+          </Modal.Header>
           <Modal.Body>
+            <Form.Label>Ajouter une matière</Form.Label>
             <Form.Group controlId="formBasicSelect" className="my-1">
               <Form.Label>Titre</Form.Label>
               <Form.Control
