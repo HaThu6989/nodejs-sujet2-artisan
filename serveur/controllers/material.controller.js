@@ -43,12 +43,6 @@ export const createMaterial = (req, res) => {
     .then((response) => {
       res.status(201).json(response);
     })
-    // .then(() => {
-    //   return MaterialModel.find()
-    //     .limit(1)
-    //     .sort({ $natural: -1 })
-    //     .then((response) => res.status(201).json(response));
-    // })
     .catch((err) => {
       res.status(500).json({
         message: "error creating a new material",
