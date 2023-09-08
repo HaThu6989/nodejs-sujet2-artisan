@@ -1,6 +1,6 @@
 # Artisan
-An application of a craft lists the furniture that the craft makes with the possibility of seeing exactly what materials it used for each creation. He gives a name for each piece of furniture he designs.
-Sometimes he makes the same piece of furniture several times.
+An application of a craft lists the furniture that the craft makes with the possibility of seeing exactly what materials it used for each creation. He gives a name for each piece of furniture he designs.\
+Sometimes he makes the same piece of furniture several times.\
 There is also a chart of the list of materials used.
 
 ## About
